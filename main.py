@@ -10,20 +10,37 @@ print('---------------------ORL - Nearest Centroid---------------------')
 orl_data = np.array(sio.loadmat('orl_data.mat')['data']).transpose()
 orl_labels = np.array(sio.loadmat('orl_lbls.mat')['lbls']).ravel()
 
-X_train, X_test, Y_train, Y_test = train_test_split(orl_data,orl_labels,test_size=0.30,random_state=42)
+orl_data_train, orl_data_test, orl_lables_train, orl_labels_test = train_test_split(orl_data,orl_labels,test_size=0.30,random_state=42)
 
 clf = NearestCentroid()
 # Train with the data
-clf.fit(X_train,Y_train)
+clf.fit(orl_data_train,orl_lables_train)
 
 # Create predition for train data
-y_pred_test = clf.predict(X_test)
+y_pred_test = clf.predict(orl_data_test)
 
 #How well does it fit
-score = clf.score(X_test,Y_test)
+score = clf.score(orl_data_test,orl_labels_test)
 
 print(score)
 
 print('---------------------MINST - Nearest Centroid---------------------')
 mndata = MNIST('./')
-images, labels = mndata.load_training()
+images_training, labels_training = mndata.load_training()
+images_test, labels_test = mndata.load_testing()
+
+
+img_train = mndata.process_images_to_numpy(images_training)
+img_test = mndata.process_images_to_numpy(images_test)
+lbl_train = mndata.process_images_to_numpy(labels_training)
+lbl_test = mndata.process_images_to_numpy(labels_test)
+
+# Train with the data
+clf.fit(img_train,lbl_train)
+
+# Create predition for train data
+labels_pred_test = clf.predict(img_test)
+
+#How well does it fit
+score_minst = clf.score(img_test,lbl_test)
+print(score_minst)
