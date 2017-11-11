@@ -16,7 +16,18 @@ orl_data_train, orl_data_test, orl_lables_train, orl_labels_test = train_test_sp
 
 orl_score = nearest_centroid_classifiers.nc_fit(orl_data_train,orl_data_test,orl_lables_train,orl_labels_test)
 
-print('Score from function ' +str(orl_score))
+###-----PCA------###
+
+orl_pca_train, orl_pca_test = nearest_centroid_classifiers.pca_fit(orl_data_train,orl_lables_train,orl_data_test,orl_labels_test,2)
+orl_pca_train_10, orl_pca_test_10 = nearest_centroid_classifiers.pca_fit(orl_data_train,orl_lables_train,orl_data_test,orl_labels_test,10)
+orl_pca_score_2 = nearest_centroid_classifiers.nc_fit(orl_pca_train,orl_pca_test,orl_lables_train,orl_labels_test)
+orl_pca_score_10 = nearest_centroid_classifiers.nc_fit(orl_pca_train_10,orl_pca_test_10,orl_lables_train,orl_labels_test)
+
+
+print('Score from function ' + str(orl_score))
+print('Score from PCA - 2 Components ' + str(orl_pca_score_2))
+print('Score from PCA - 10 Components ' + str(orl_pca_score_10))
+
 
 
 print('---------------------MINST - Nearest Centroid---------------------')
@@ -26,4 +37,13 @@ images_test, labels_test = mndata.load_testing()
 
 minst_score = nearest_centroid_classifiers.nc_fit(images_training,images_test,labels_training,labels_test)
 
-print('Score from function ' +str(minst_score))
+minst_pca_train, minst_pca_test = nearest_centroid_classifiers.pca_fit(images_training,labels_training,images_test,labels_test,2)
+minst_pca_train_10, minst_pca_test_10 = nearest_centroid_classifiers.pca_fit(images_training,labels_training,images_test,labels_test,10)
+minst_pca_score_2 = nearest_centroid_classifiers.nc_fit(minst_pca_train,minst_pca_test,labels_training,labels_test)
+minst_pca_score_10 = nearest_centroid_classifiers.nc_fit(minst_pca_train_10,minst_pca_test_10,labels_training,labels_test)
+
+
+
+print('Score from function ' + str(minst_score))
+print('Score from PCA - 2 Components ' + str(minst_pca_score_2))
+print('Score from PCA - 10 Components ' + str(minst_pca_score_10))

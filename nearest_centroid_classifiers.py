@@ -18,9 +18,9 @@ def nc_fit(Xtrain,Xtest,Xtrain_lbls,Xtest_lbls):
     return score
 
 
-def pca_fit(Xtrain,Xtest, components):
+def pca_fit(Xtrain,Xtrain_lbls,Xtest,Xtest_lbls, components):
     pca = PCA(n_components=components)
     PCA_train = pca.fit_transform(Xtrain)
     PCA_test = pca.fit(Xtrain).transform(Xtest)
-    return PCA_test
+    return PCA_train, PCA_test
 
