@@ -3,6 +3,7 @@ import scipy.io as sio
 from sklearn.decomposition import PCA
 from mnist import MNIST
 from sklearn.neighbors import NearestCentroid
+from sklearn import neighbors
 
 
 def nc_fit(Xtrain,Xtest,Xtrain_lbls,Xtest_lbls):
@@ -24,3 +25,9 @@ def pca_fit(Xtrain,Xtrain_lbls,Xtest,Xtest_lbls, components):
     PCA_test = pca.fit(Xtrain).transform(Xtest)
     return PCA_train, PCA_test
 
+def nn_fit(Xtrain,Xtest,Xtrain_lbls,Xtest_lbls):
+    clf = neighbors.KNeighborsClassifier()
+    clf.fit(Xtrain, Xtrain_lbls)
+    Z = clf.predict(Xtest)
+    score = clf.score(Xtest,Xtest_lbls)
+    return score
