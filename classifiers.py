@@ -113,8 +113,6 @@ def mse_perceptron_train_and_classify(data,lables,rng,name,datat,t0=time()):
           % (name, (time() - t0), score, datat))
     
 
-
-
 def batch_perceptron(xx, xlabels, wanted_label, learning_rate=0.05, max_t=200, debug=False):
   x = []
   labels = []
@@ -160,7 +158,6 @@ def binary_classifyer(XLables, wanted_label):
             newLabels.append(-1)
 
     return newLabels
-
 
 def mse_classify(w, xtest, xtest_labels):
      classified_labels = []

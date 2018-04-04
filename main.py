@@ -111,3 +111,4 @@ print('--------------------- Plots---------------------')
 
 #plot.plot_data(orl_pca_test,orl_labels_test,"NN ORL Test Data")
 #plot.plot_data(orl_pca_test,nn_orl_pca_pred_labels2,"NN Classified ORL Test Data")
+'''

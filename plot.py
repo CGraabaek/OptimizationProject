@@ -6,8 +6,6 @@ from scipy import ndimage
 from sklearn import metrics
 
 # For plotting a scatter plot of the data
-
-
 def plot_data(data, labels, title="", index=0):
     labels = np.ndarray.flatten(labels)
     classes = list(set(labels))
@@ -32,8 +30,6 @@ def plot_data(data, labels, title="", index=0):
     plt.show()
 
 # Plot a single mnist digit
-
-
 def plot_mnist_digit(images, index):
     first_image = images[index]
     first_image = np.array(first_image, dtype='float')
@@ -42,8 +38,6 @@ def plot_mnist_digit(images, index):
     plt.show()
 
 # Plot at single ORL face
-
-
 def plot_orl_face(images, indes):
     first_image = images[index]
     first_image = np.array(first_image, dtype='float')
@@ -52,8 +46,6 @@ def plot_orl_face(images, indes):
     plt.show()
 
 # Create an m by n grid of digits
-
-
 def plot_mnist_n_by_m(elts, m, n):
     fig = plt.figure()
     images = [elt.reshape(28, 28) for elt in elts]
@@ -96,8 +88,6 @@ def plot_confusion_matrix(Xtest_lbls, predicted, title='Confusion matrix', cmap=
     plt.show()
 
 # For plotting different kinds of same label
-
-
 def plot_numbers(x, labels, wanted_label):
     elts = []
 
@@ -106,7 +96,6 @@ def plot_numbers(x, labels, wanted_label):
             elts.append(x[i])
 
     plot_mnist_n_by_m(elts, 5, 2)
-
 
 
 # Plot a digit from 0 - 9
